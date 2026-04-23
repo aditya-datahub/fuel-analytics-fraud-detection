@@ -1,10 +1,5 @@
 # ⛽ FuelGuard — Fraud Detection & Customer Analytics Pipeline
 
-[![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)](https://python.org)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791?logo=postgresql)](https://postgresql.org)
-[![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?logo=powerbi)](https://powerbi.microsoft.com)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-
 > **"Every litre of fuel that goes unaccounted for is money stolen from the customer — and this project was built to catch exactly that."**
 
 ---
@@ -69,7 +64,7 @@ Raw Idea
    ↓
 Data Simulation (Python)         ← Realistic fraud patterns, peak hours, customer behavior
    ↓
-Data Storage (PostgreSQL)        ← 4 tables, normalized schema, 10+ SQL queries
+Data Storage (PostgreSQL)        ← 4 tables, normalized schema, 10 SQL queries
    ↓
 Exploratory Analysis (Python)    ← Hypothesis validation, sensor fraud detection
    ↓
@@ -83,7 +78,7 @@ Interactive Dashboard (Power BI) ← 2-page premium dashboard, DAX measures, dat
 | Layer | Tool | What I Did |
 |-------|------|-----------|
 | Data Generation | Python (Pandas, NumPy) | Simulated 1,00,000 transactions with realistic fraud & retention logic |
-| Storage & Querying | PostgreSQL | Designed schema, wrote 10+ analytical SQL queries |
+| Storage & Querying | PostgreSQL | Designed schema, wrote 10 analytical SQL queries |
 | Analysis | Python (Matplotlib) | EDA, hypothesis testing, sensor fraud detection |
 | Visualization | Power BI + DAX | Built 2-page interactive dashboard with 5-table data model |
 
