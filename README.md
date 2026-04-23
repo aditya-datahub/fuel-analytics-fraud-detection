@@ -114,7 +114,7 @@ fuel-analytics-fraud-detection/
 │   └── fuel_station_analytics.ipynb  # Full pipeline — simulation to EDA to export
 │
 ├── 📁 sql/
-│   └── fuel_station_analysis_queries.sql  # 10+ business queries
+│   └── fuel_station_analysis_queries.sql  # 10 business queries
 │
 ├── 📁 dashboard/
 │   └── fuel_dashboard.pbix           # Power BI dashboard
