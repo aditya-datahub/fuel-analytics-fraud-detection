@@ -15,7 +15,7 @@ The questions this project set out to answer:
 - 📍 **Where** is fraud concentrated — which cities, which stations?
 - 👥 **How** does fraud affect customer trust and repeat visits?
 - ⏱️ **Does** long wait time push customers away?
-- 🔬 **Can** sensor data physically prove under-dispensing?
+- 🔬 **Can** sensor data quantify under-dispensing?
 
 ---
 
@@ -31,27 +31,29 @@ The questions this project set out to answer:
 
 ## 🔍 What I Found
 
-After analyzing **1,00,000 transactions** across **50 stations** in **3 cities**, here's what the data revealed:
+> 📝 **Note:** All data in this project is synthetically simulated (seed-controlled Python), including the fraud, retention and wait-time patterns. The goal is to demonstrate the full analytics pipeline: schema design, SQL analysis, exception detection and dashboarding. The findings below describe the simulated dataset, not real-world fuel stations. Revenue lost assumes ₹100 per litre.
+
+After analyzing **100,000 simulated transactions** across **50 stations** in **3 cities**, here's what the dataset showed:
 
 | Finding | Insight |
 |---------|---------|
-| 🔴 Delhi fraud rate | **51.2%** — highest among all cities |
-| 🚨 High-risk stations | **9 stations** with 96%+ fraud rate identified |
-| ⛽ Fuel stolen | **16,200 litres** physically under-dispensed |
-| 📉 Trust impact | Fraud customers return at **half the rate** (18% vs 36%) |
-| ⏱️ Wait time effect | Every wait category increase drops retention by ~2% |
+| 🔴 Delhi fraud rate | **51.2%** — highest of the 3 simulated cities (driven by fraud-prone station placement) |
+| 🚨 High-risk stations | **9 stations** with 96%+ fraud rate flagged |
+| ⛽ Under-dispensing | **16,200 litres** quantified via sensor gap analysis (gap > 0.5L) |
+| 📉 Trust impact | Repeat rate of **18%** on fraud transactions vs **36%** on clean ones |
+| ⏱️ Wait time effect | Repeat rate falls ~2 percentage points per wait category (small effect) |
 
 ---
 
-## ✅ Hypotheses — All 3 Proved
+## ✅ Hypotheses Tested
 
-This project wasn't just exploratory — it was hypothesis-driven, like real business analytics.
+This project was hypothesis-driven: each hypothesis was tested against the simulated data.
 
 | # | Hypothesis | Verdict | Evidence |
 |---|-----------|---------|---------|
-| H1 | Fraud reduces customer repeat visits | ✅ **Proved** | Fraud txns: 18% vs Clean: 36% repeat rate |
-| H2 | Higher wait time = lower retention | ✅ **Proved** | Low: 34% → Medium: 33% → High: 30% |
-| H3 | Frequent customers retain better | ✅ **Proved** | Frequent: 48% vs Occasional: 24% |
+| H1 | Fraud reduces customer repeat visits | ✅ **Supported** | Fraud txns: 18% vs Clean: 36% repeat rate |
+| H2 | Higher wait time = lower retention | ✅ **Supported** | Low: 34% → Medium: 33% → High: 30% |
+| H3 | Frequent customers retain better | ✅ **Supported** | Frequent: 48% vs Occasional: 24% |
 
 ---
 
@@ -62,13 +64,13 @@ This is a **complete end-to-end analytics pipeline** — not just a dashboard.
 ```
 Raw Idea
    ↓
-Data Simulation (Python)         ← Realistic fraud patterns, peak hours, customer behavior
+Data Simulation (Python)         ← Simulated fraud patterns, peak hours, customer behavior
    ↓
 Data Storage (PostgreSQL)        ← 4 tables, normalized schema, 10 SQL queries
    ↓
-Exploratory Analysis (Python)    ← Hypothesis validation, sensor fraud detection
+Exploratory Analysis (Python)    ← Hypothesis testing, sensor gap detection
    ↓
-Interactive Dashboard (Power BI) ← 2-page premium dashboard, DAX measures, data model
+Interactive Dashboard (Power BI) ← 2-page dashboard, DAX measures, data model
 ```
 
 ---
@@ -77,9 +79,9 @@ Interactive Dashboard (Power BI) ← 2-page premium dashboard, DAX measures, dat
 
 | Layer | Tool | What I Did |
 |-------|------|-----------|
-| Data Generation | Python (Pandas, NumPy) | Simulated 1,00,000 transactions with realistic fraud & retention logic |
+| Data Generation | Python (Pandas, NumPy) | Simulated 100,000 transactions with embedded fraud & retention logic |
 | Storage & Querying | PostgreSQL | Designed schema, wrote 10 analytical SQL queries |
-| Analysis | Python (Matplotlib) | EDA, hypothesis testing, sensor fraud detection |
+| Analysis | Python (Matplotlib) | EDA, hypothesis testing, sensor gap detection |
 | Visualization | Power BI + DAX | Built 2-page interactive dashboard with 5-table data model |
 
 ---
@@ -88,10 +90,10 @@ Interactive Dashboard (Power BI) ← 2-page premium dashboard, DAX measures, dat
 
 | Table | Records | Key Columns |
 |-------|---------|------------|
-| transactions | 1,00,000 | fraud_flag, fuel_diff, wait_time, repeat_customer |
+| transactions | 100,000 | fraud_flag, fuel_diff, wait_time, repeat_customer |
 | customers | 5,000 | customer_type, signup_date |
 | stations | 50 | city, fraud_prone_flag, quality_score |
-| sensor_data | 1,00,000 | expected_fuel, actual_fuel, gap_liters |
+| sensor_data | 100,000 | expected_fuel, actual_fuel, gap_liters |
 
 **Cities:** Delhi • Mumbai • Bangalore
 
@@ -104,8 +106,8 @@ Interactive Dashboard (Power BI) ← 2-page premium dashboard, DAX measures, dat
 ```
 fuel-analytics-fraud-detection/
 │
-├── 📁 data/                          # Raw datasets
-│   ├── transactions.csv              # 1,00,000 transactions
+├── 📁 data/                          # Simulated datasets
+│   ├── transactions.csv              # 100,000 transactions
 │   ├── customers.csv                 # 5,000 customers
 │   ├── stations.csv                  # 50 fuel stations
 │   └── sensor_data.csv               # Sensor readings
@@ -121,7 +123,7 @@ fuel-analytics-fraud-detection/
 │
 ├── 📁 images/                        # Dashboard screenshots
 │   ├── overview.png
-│   └── deep_dive.png
+│   └── fraud_deep_dive.png
 │
 ├── requirements.txt
 └── README.md
@@ -171,7 +173,7 @@ psycopg2-binary
 
 **Aditya Sharma** — Data Analyst
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Aditya%20Sharma-blue?logo=linkedin)](https://www.linkedin.com/in/aditya-sharma-9b6588286/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Aditya%20Sharma-blue?logo=linkedin)](https://www.linkedin.com/in/aditya-sharma-data-analyst/)
 [![GitHub](https://img.shields.io/badge/GitHub-aditya--datahub-black?logo=github)](https://github.com/aditya-datahub)
 
 ---
